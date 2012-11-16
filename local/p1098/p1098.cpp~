@@ -1,0 +1,31 @@
+#include <cstdio>
+#include <cstring>
+const int MAX_LEN = 10000000;
+char s[MAX_LEN+5];
+int main()
+{
+	while (1)
+	{
+		scanf("%s",s);
+		if (!strcmp(s,"."))
+		  break;
+		if (strlen(s) % 2 == 1)
+		{
+			bool flag = false;
+			for (int i=0;i<strlen(s)-1;i++)
+			{
+				if (s[i] != s[i+1])
+				{
+					flag = true;
+					break;
+				}
+			}
+			if (flag)
+			  printf("%d\n",1);
+			else 
+			  printf("%d\n",strlen(s));
+		}
+
+	}
+	return 0;
+}

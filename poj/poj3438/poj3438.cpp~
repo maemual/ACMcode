@@ -1,0 +1,29 @@
+#include <cstdio>
+#include <cstring>
+int map[10];
+int main()
+{
+	int n;
+	scanf("%d",&n);
+	char s[1005];
+	while (n--)
+	{
+		memset(map,0,sizeof(map));
+		scanf("%s",s);
+		int i=0,j=0;
+		int len = strlen(s);
+		while (1)
+		{
+			j=i;
+			while (j+1 <= len && s[j+1] == s[i])
+				j++;
+			if (i <= len)	
+				printf("j%d s[i]%c ",j-i,s[i]);
+			i=j;
+			if (i >= len)
+				break;
+		}
+		printf("\n");
+	}
+	return 0;
+}

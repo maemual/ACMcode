@@ -1,0 +1,20 @@
+#include <cstdio>
+#include <cstring>
+const int MAX_LEN = 80;
+char s[16][MAX_LEN+5];
+
+int main()
+{
+	while (1)
+	{
+		scanf("%s",s[0]);
+		if (!strcmp(s[0],"-1"))
+		  break;
+		for (int i=1;i<=15;i++)
+		{
+			work(i);
+			
+		}
+	}
+	return 0;
+}

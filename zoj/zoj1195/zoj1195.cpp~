@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	int n,m,c;    // n,电器的数目，m，操作的数目，c限额;
+	int status[25]; //描述电器的状态;
+	int cap ;   //记录当前所消耗的电量;
+	int maxcap ; //记录最多所消耗的电量;
+	int flag; //标记是否超出规定的电量;
+	int a[25];
+	int op,count=1;
+	while (scanf("%d %d %d",&n,&m,&c) != EOF)
+	{
+
+		if(n==0&&m==0&&c==0) break;
+
+		printf("Sequence %d\n",count++);
+		cap = 0; maxcap = 0; flag = 0;
+		memset(status,0,sizeof(status));
+		for (int i=1;i<=n;i++)
+		{
+			scanf("%d",&a[i]);
+		}
+		for(int i=1;i<=m;i++)
+		{
+			scanf("%d",&op);
+			if(status[op] == 0)
+			{
+				status[op] =1;
+				cap+=a[op];
+				if(cap<=c && maxcap<=n)
+				  maxcap=cap;
+			}
+			else 
+			{
+				status[op] = 0;
+				cap-=a[op];
+			}
+			if(cap>c)
+			  flag = 1;
+		}
+		if(flag == 1)
+		  printf("Fuse was blown.\n\n");
+		else 
+		  printf("Fuse was not blown.\nMaximal power consumption was %d amperes.\n\n",maxcap);
+	}
+	return 0;
+}

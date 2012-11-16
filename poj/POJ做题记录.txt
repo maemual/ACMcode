@@ -1,0 +1,181 @@
+1000：	A+B
+	所有OJ的第一道题，无需言。
+1001：	Exponentiation
+	高精度乘法，用C++套模板，用Java很简单。
+1002:	487-3279
+	简单的字符串处理及排序，统计。
+1003:	Hangover
+	简单的模拟，枚举重心的物理题。
+1004：	Financial Management
+	简单的模拟，没什么好说的。
+1005:	I Think I Need a Houseboat
+	非常简单的计算几何问题，就是小学问题。
+1006：	Biorhythms
+	求三个循环的下一次重合的时间。
+1007：	DNA Sorting
+	求每个字符串的逆序对数，然后排序，输出。
+1008：	Maya Calendar
+	一种历法的转换。
+1010：	STAMPS
+	经典的DFS，有待加深理解。
+1011：	Sticks
+	比较经典的DFS题目，但要注意剪枝，否则会TLE。
+1012：	Joseph
+	约瑟夫问题的变形，前一半出队的人恰好是原队列的后一半人。最快的方法就是打表，N小于14。暴力模拟也能过。
+1013：	Counterfeit Dollar
+	唔，模拟。
+1016：	Dog & Gopher
+	模拟。 
+1017：	Packets
+	对包裹进行打包，数学题。
+1028：	Web Navigation
+	考察对栈的使用。使用STL中的Stack非常爽。
+1045：	Bode Plot
+	物理题，或者说是数学题。
+1046：	Color Me Less
+	纯模拟，从前面一片中依照公式找到和最后一组值最小的那组。
+1050：	To the Max
+	最大子阵和，直接套模板。
+1056：	IMMEDIATE DECODABILITY
+	判断是否有串是其他串的前缀。暴力做法：排序，然后依次和后面的一个进行比较。
+1067：	取石子游戏
+	威佐夫博弈，看网上资料的。
+1068：	Parencodings
+	对字符串的处理，反推，模拟。
+1088：	滑雪
+	经典的记忆化搜索的题目，DP动态规划的思想。
+1101：	The Game
+	BFS
+1111：	Image Perimeters
+	先输入一个矩阵，再输入一个X的位置，然后输出与这个X在八个方向能够连起来的所有X组成的图形的周长。DFS不解释。
+1125：	Stockbroker Grapevine
+	Floyed，注意INT_MAX的使用，其中会可能溢出。
+1132：	Border
+	沿着一个点，按照指定的顺序走，最后输出图。
+1146：	ID Codes
+	生成给定字符串的下一个排列，如果已经是最后一个，那么就输出No Successor
+1157：	LITTLE SHOP OF FLOWERS
+	动态规划的经典题目。
+1163：	The Triangle
+	也是一道经典的动态规划题目。
+1183：	反正切函数的应用
+	难得的中文题，数学题，靠网络大牛推倒公式。
+1200：	Crazy Search
+	把子串转换成N进制数，用hash的思想解决。 
+1207：	The 3n + 1 problem
+	暴力打表。被阴了，输入不一定后面的就比前面的大。。
+1218：	THE DRUNK JAILER
+	又是纯模拟。
+1247：	Magnificent Meatballs
+	非常弱智的模拟。
+1256：	Anagram
+	按字典序从输入开始生成全排列，用STL很简单。
+1269：	Intersecting Lines
+	给你两条直线，判断这两条直线是否共线，相交，不相交（即平行），相交的话输出交点。
+1298：	The Hardest Problem Ever
+	一般叫这种名字的都是水题。
+1299:	Polar Explorer
+	初中物理题。
+1316：	Self Numbers
+	打表。
+1321：	棋盘问题
+	八皇后问题的简化版。
+1338：	Ugly Numbers
+	先打表。不过此题的打表方法堪称经典。
+1401：	Factorial
+	求n！末尾0的个数。又是看了网上的推导。
+1423：	Big Number
+	求n!有几位。还是看了网上的推导。。。
+1426：	Find The Multiple
+	BFS。
+1468：	Rectangles
+	模拟。
+1488：	TEX Quotes
+	字符替换。
+1493：	Machined Surfaces
+	唔，想想就知道了。
+1502：	MPI Maelstrom
+	求源点到其余各点的最短距离中的最大值。Dijkstra模板直接。
+1504：	Adding Reversed Numbers
+	把数字逆序，相加，再逆序。
+1517：	u Calculate e
+	打表。
+1519：	Digital Roots
+	模拟，或者数学公式。
+1528：	Perfection
+	对于每一个数，把它的所有除了本身以外的因子相加，如果之和大于它本身就认为这个数abundant，如果之和小于它本身就认为这个数deficient，如果之和等于它本身就认为这个数prefect，以0为结束，按照题中给出格式输出。暴力之。
+1543：	Perfect Cubes
+	穷举。
+1547：	Clay Bully
+	3个整数是长宽高，然后你把体积求出来，打印体积最大的那个人和最小的那个人就行了。
+1552：	Doubles
+	求一数列中有多少组数成两倍关系。
+1565：	Skew Binary
+	给出一数字num，按规则求出它的Skew Binary码
+1575：	Easier Done Than Said?
+	对题中给出的字符串进行判断，需要符合如下三个要求则认为这个字符串AC，否则
+not AC
+1595：	Prime Cuts
+	题目很无聊，但POJ的数据太恶心了。
+1656：	Counting Black
+	纯模拟。
+1799：	Yeehaa!
+	简单的计算几何，算一下就好了。
+1862：	Stripies
+	按升序排序，然后按照公式一个一个计算。坑爹的POJ，double的数按照%lf输出他就给我WA掉，按照%f输出就AC，擦。
+1939：	Diplomatic License
+	这题就是求中点，但是不知道为什么，一开始用结构体表示一个点的时候，一直TLE，然后就把x,y坐标分别放在两个数组里，他就A了，我次奥。。。
+2039：	To and Fro
+	纯模拟，注意好控制就行了。
+2081：	Recaman's Sequence
+	简单的打个表就出来了。
+2101：	Honey and Milk Land
+	算对角线的长度，向上取整。
+2109：	Power of Cryptography
+	好吧，这题我无语了，大家不要想多了，用一个double就可以解决，编译器要选择C++，同样的代码，用G++就WA。
+2159：	Ancient Cipher
+	只要上下串的字频相同就可以认为是YES的了。
+2163：	Easy Trading
+	题目很长，很蛋疼，这道题的难点就在于题目太难读懂了。
+2190：	ISBN
+	题目很简单，单纯的枚举就好了，但是题目太阴险，有几个Trick，要谨慎啊。
+2243：	Knight Moves
+	经典的BFS。
+2249：	Binomial Showdown
+	就是求组合数。
+2251：	Dungeon Master
+	三维的迷宫问题，BFS水之。
+2362：	Square
+	POJ1011的简化版，但是数据要比1011要强，在POJ1011上0MS通过的代码，在此题只能16毫秒AC。
+2370：	Democracy in danger
+	依然是排序，统计。
+2371：	Questions and answers
+	排序，没什么好说的。
+2498：	StuPId
+	简单的穷举就好了，注意9，3，7的这个数字顺序是从后向前推的。
+2506：	Tilling
+	DP+高精度
+2538：	WERTYU
+	简单的字符映射，第一次用map做。
+2545：	Hamming Problem
+	和poj1338 ugly number同一个做法，最后输出忘了写成%lld，导致WA了N次。POJ第200题。
+2546：	Circular Area
+	计算两圆的公共面积，G++WA，C++AC，无语。
+2562：	Primary Arithmetic
+	模拟高精度计算的过程，统计期间有多少次进位。
+2606：	Rabbit hunt
+	计算几何，判断三点共线
+2610：	Dog & Gopher
+	弱智的计算几何问题，注意用距离判断并且不开方的时候，要乘以4而不是2，还有double型在POJ上用lf输出就WA，换成f就AC，无语。
+2624：	4th Point
+	给平行四边形的两邻边的端点坐标，求第四个点的坐标。注意，给的数据不一定是中间的两个点相交。
+2656：	Unhappy Jinjin
+	我原本以为，只有1000才会在Hint里把代码贴上去，没想到这道水题，实在是太没节操了。
+2657：	Comfort
+	题目很简单，简单的模拟就行了，不过第一次考虑不全，有可能陷入死循环里，所以第一次TLE了，然后很无辜的看了别人的代码之后才AC掉。
+2663：	Tri Tiling
+	DP
+2689：	Prime Distance
+	筛选法求素数，加上大区间筛素数。
+3414：	Pots
+	两个桶之间互相倒水什么的，经典的BFS题目。

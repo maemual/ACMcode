@@ -1,0 +1,40 @@
+#include <cstdio>
+#include <cstring>
+const int MAX_LEN = 10000;
+bool prime[MAX_LEN];
+int pri[MAX_LEN];
+int main()
+{
+	int p = 4;
+	memset(prime,1,sizeof(prime));
+	for (int i=2;i<MAX_LEN;i++)
+	{
+		if (prime[i])
+		{
+			while (p<MAX_LEN)
+			{
+				prime[p] = false;
+				p += i;
+			}
+		}
+		p = 2*(i+1);
+	}
+	prime[0] = false;
+	prime[1] = false;
+	int k = 0;
+	for (int i=0;i<MAX_LEN;i++)
+	{
+		if (prime[i])
+		  pri[k++] = i;
+	}
+	int n;
+	while (1)
+	{
+		scanf("%d",&n);
+		if (n==0)
+		  break;
+		int sum = 0;
+		
+	}
+	return 0;
+

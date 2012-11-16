@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main()
+{
+	int s,p,y,j;
+	int b1,b2,b3,a3;
+	while (scanf("%d %d %d %d",&s,&p,&y,&j) != EOF)
+	{
+		int x = 12+j-s-2*p;
+		for (b1=0;b1<=1;b1++)
+		{
+			for (b2=0;b2<=1;b2++)
+			{
+				for (a3 = 0;a3 <=10;a3++)
+				{
+					if (b1+b2*2+3*a3 == x)
+					  goto result;
+				}
+			}
+		}
+result:
+		printf("%d %d %d\n",s+p+a3+b1+b2,p+a3+b2,a3);
+	}
+	return 0;
+}
