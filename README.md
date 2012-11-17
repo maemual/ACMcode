@@ -1,2 +1,2 @@
-This is my ACM codes.
-Just for learning.
+这里都是我的ACM之路中的代码。
+主要涉及POJ和ZOJ，目前基本都是水题，难题还不会做。
