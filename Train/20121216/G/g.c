@@ -16,17 +16,23 @@ int bfs()
 	while (head <= tail)
 	{
 		j = 0;
-		for (i = 1; i <= queue[head]; i++)
+		for (i = 1; i*i <= queue[head]; i++)
 		{
 			if (queue[head] % i == 0)
 			  div[j++] = i;
 		}
+		int temp = j;
+		for (i = 0; i < temp; i++)
+		{
+			div[j++] = queue[head] / div[i];
+		}
+		div[j++] = queue[head];
 		for (i = 0; i < j; i++)
 		{
 			next = queue[head] + div[i];
 			if (next > 100000)
 			  break;
-			if (vis[queue[head]]+1 < vis[next])
+			if (vis[queue[head]] + 1 < vis[next])
 			{
 				vis[next] = vis[queue[head]] + 1;
 				queue[tail++] = next;
