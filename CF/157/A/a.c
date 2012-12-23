@@ -7,30 +7,17 @@ int main()
 	int i,j;
 	for (i = 0; i < 8; i++)
 	{
-		for (j = 0; j < 8; j++)
-		{
-			scanf("%c",&map[i][j]);
-		}
-		getchar();
+		scanf("%s",map[i]);
 	}
-
 	int flag = 0;
 	for (i = 0; i < 8; i++)
 	{
-		for (j = 0; j < 7; j++)
+		if (strcmp(map[i],"WBWBWBWB") && strcmp(map[i],"BWBWBWBW"))
 		{
-			if (map[i][j] == map[i][j+1])
-			{
-				flag = 1;
-				break;
-			}
+			printf("NO\n");
+			return 0;
 		}
-		if (flag)
-		  break;
 	}
-	if (flag)
-	  printf("NO\n");
-	else
-	  printf("YES\n"); 
+	printf("YES\n"); 
 	return 0;
 }
