@@ -22,7 +22,7 @@ typedef long long ll;
 #define MY_MIN(a, b) ((a) < (b) ? (a) : (b))
 #define MY_MALLOC(n, type) ((type *)malloc((n) * sizeof(type)))
 #define MY_ABS(a) (((a) >= 0) ? (a) : (-(a)))
-#define MY_INT_MAX 0x7fffffff
+#define MY_INT_MAX 0x7f3f3f3f
 
 int main()
 {
