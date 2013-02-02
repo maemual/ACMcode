@@ -1,5 +1,6 @@
 *.out
 *.*~
 *.pdf
+*.class
 tag
 Makefile
