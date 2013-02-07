@@ -8,11 +8,11 @@ void doit(int x,int y,int k)
 {
 	if (k == 1)
 	{
-		ans[x][y] = '/';	ans[x][y+1] = '\\';
+						ans[x][y] = '/';			ans[x][y+1] = '\\';
 		ans[x+1][y-1] = '/';ans[x+1][y]='_';ans[x+1][y+1]='_';ans[x+1][y+2] = '\\';
 		return ;
 	}
-					doit(x,y,k-1);
+						doit(x,y,k-1);
 	doit(x+p[k-1],y-p[k-1],k-1);doit(x+p[k-1],y+p[k-1],k-1);
 }
 int main()
@@ -27,22 +27,8 @@ int main()
 		doit(0,p[n]-1,n);
 		for (i = 0; i < p[n]; i++)
 		{
-			for (j = p[n+1]; j > 0; j--)
+			for (j = 0; j < p[n]+i+1; j++)
 			{
-				if (ans[i][j-1] != ' ')
-				{
-					ans[i][j] = '\n';
-					break;
-				}
-			}
-		}
-		for (i = 0; i < p[n]; i++)
-		{
-			for (j = 0; j < p[n+1]; j++)
-			{
-				if (ans[i][j] == '\n')
-				  break;
-				else
 				  printf("%c",ans[i][j]);
 			}
 			printf("\n");

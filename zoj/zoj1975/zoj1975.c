@@ -25,26 +25,10 @@ int main()
 		  break;
 		memset(ans,' ',sizeof(ans));
 		doit(0,p[n]-1,n);
-		/*
-		for (i = 0; i < p[n]; i++)
-		{
-			for (j = 2049; j > 0; j--)
-			{
-				if (ans[i][j-1] != ' ')
-				{
-					ans[i][j] = '\n';
-					break;
-				}
-			}
-		}
-		*/
 		for (i = 0; i < p[n]; i++)
 		{
 			for (j = 0; j < p[n]+i+1; j++)
 			{
-			//	if (ans[i][j] == '\n')
-			//	  break;
-			//	else
 				  printf("%c",ans[i][j]);
 			}
 			printf("\n");
