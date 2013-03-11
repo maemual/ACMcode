@@ -3,5 +3,7 @@
 *.pdf
 *.class
 *.exe
+*.classpath
+*.project
 tag
 Makefile
