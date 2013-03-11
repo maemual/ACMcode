@@ -18,14 +18,14 @@ using namespace std;
 typedef long long ll;
 
 #define MY_PI acos(-1)
-#define MY_MAX(a, b) ((a) > (b) ? (a) : (b))   
+#define MY_MAX(a, b) ((a) > (b) ? (a) : (b))  
 #define MY_MIN(a, b) ((a) < (b) ? (a) : (b))
 #define MY_MALLOC(n, type) ((type *)malloc((n) * sizeof(type)))
 #define MY_ABS(a) (((a) >= 0) ? (a) : (-(a)))
-#define MY_INT_MAX 0x7f3f3f3f
+#define MY_INT_MAX 0x3f3f3f3f
 
 int main()
 {
+	printf("%.32lf\n",MY_PI);
     return 0;
 }
-
