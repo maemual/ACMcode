@@ -61,6 +61,7 @@ int main()
 		str[k] = '\0';
 
 		hashnum = ELFhash(str);
+		//处理hash冲突问题
 		for (;;hashnum++){
 			if (hash[hashnum] == -1)
 				break;
