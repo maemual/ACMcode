@@ -50,7 +50,7 @@ int main()
 	for (int i = 15; i >= 0; i--){
 		ch = getchar();
 		if (ch == 'b')
-			Queue[tail].state += (1 << i);
+			Queue[tail].state |= (1 << i);
 		if (i % 4 == 0)
 			getchar();
 	}
