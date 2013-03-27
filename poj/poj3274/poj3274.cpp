@@ -10,7 +10,7 @@
 #include<cstring>
 using namespace std;
 
-#define MAX_LEN 1000007
+#define MAX_LEN 10000007
 int sum[100005][35];
 int hash[MAX_LEN],next[MAX_LEN];
 int ELFhash(char *key){
@@ -24,6 +24,14 @@ int ELFhash(char *key){
 		}
 	}
 	return h % MAX_LEN;
+}
+int BKDRHash(char *str){
+	unsigned int seed = 131;
+	unsigned int hash = 0;
+	while (*str){
+		hash = hash * seed + (*str++);
+	}
+	return (hash % MAX_LEN);
 }
 int main()
 {
@@ -60,7 +68,7 @@ int main()
 		
 		str[k] = '\0';
 
-		hashnum = ELFhash(str);
+		hashnum = BKDRHash(str);
 		//处理hash冲突问题
 		for (;;hashnum++){
 			if (hash[hashnum] == -1)

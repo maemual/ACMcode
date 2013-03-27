@@ -26,6 +26,5 @@ typedef long long ll;
 
 int main()
 {
-	printf("%.32lf\n",MY_PI);
     return 0;
 }
