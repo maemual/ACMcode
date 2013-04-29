@@ -83,7 +83,6 @@ int main()
             printf("%s can not be classified after 15 iterations\n",s[0]);
         }
     }
-    //system("pause");
     return 0;
 }
 
