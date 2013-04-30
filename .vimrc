@@ -289,10 +289,6 @@ set completeopt=longest,menu
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
-
-
-
-
 "NERDtee设定
 let NERDChristmasTree=1
 let NERDTreeAutoCenter=1
