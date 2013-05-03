@@ -7,9 +7,9 @@ int ans[MAX_LEN+5];
 int length;
 void getNext(char s[])
 {
-	int j=-1;
+	int j = -1;
 	next[0] = -1;
-	for (int i=1;i<length;i++)
+	for (int i=1; i<length; i++)
 	{
 		while (j>=0 && s[j+1] != s[i])
 		  j = next[j];
@@ -18,21 +18,23 @@ void getNext(char s[])
 		next[i] = j;
 	}
 }
+void print(int x){
+	if (next[x] == -1){
+		printf("%d", x+1);
+		return ;
+	}
+	print(next[x]);
+	printf(" %d",x+1);
+}
 int main()
 {
 	while (scanf("%s",s) != EOF)
 	{
 		length = strlen(s);
 		getNext(s);
-		//for (int i=0;i<length;i++)
-		//  printf("%d ",next[i]);
-		//printf("\n");
-		int j=0;
-		for (int i=length-1;i != -1;i=next[i])
-			ans[j++] = i+1;
-		for (int i=j-1;i>0;i--)
-		  printf("%d ",ans[i]);
-		printf("%d\n",ans[0]);
+		int j = 0;
+		print(length-1);
+		printf("\n");
 	}
 	return 0;
 }
