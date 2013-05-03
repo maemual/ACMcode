@@ -17,8 +17,6 @@ void getNext(char s[])
 		next[i]=j;
 	}
 }
-
-
 int main()
 {
 	while (1)
