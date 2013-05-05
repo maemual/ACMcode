@@ -14,19 +14,13 @@ using namespace std;
 int main()
 {
 	map<string,string> mmap;
-	char ch;
 	string s1,s2;
-	while (1){
-		s1 = "";
-		s2 = "";
-		scanf("%c", &ch);
-		if (ch == '\n')
-			break;
-		s1 += ch;
-		while ((ch = getchar()) != ' ') s1 += ch;
-		while ((ch = getchar()) == ' ') ;
-		s2 += ch;
-		while ((ch = getchar()) != ' ' && ch != '\n') s2 += ch;
+	char str[205];
+	char str1[100],str2[100];
+	while (gets(str) && str[0] != '\0'){
+		sscanf(str, "%s %s", str1, str2);
+		s1.assign(str1);
+		s2.assign(str2);
 		mmap.insert(pair<string,string>(s2,s1));
 	}
 	map<string,string>::iterator it;
