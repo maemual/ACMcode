@@ -64,7 +64,6 @@ int main()
 		build(1, 1, n);
 		mset.clear();
 		for (int i = n; i >= 1; i--){
-
 		//	int xx = mset.size();
 		//	mset.clear();
 		//	k -= xx;
