@@ -46,8 +46,10 @@ struct DFA
 	{
 		in=out=0;
 		for(int i=0; i<MAXB; ++i)
-			if(~next[root][i])fail[next[root][i]]=root,que[in++]=next[root][i];
-			else next[root][i]=root;
+			if(~next[root][i])
+				fail[next[root][i]]=root,que[in++]=next[root][i];
+			else 
+				next[root][i]=root;
 		while(in!=out)
 		{
 			int x=que[out++];
@@ -70,7 +72,7 @@ struct DFA
 		{
 			int now=getVal(str[i]);
 			p=next[p][now];
-			if(~id[p])visit[id[p]]=true;
+			if(~id[p]) visit[id[p]]=true;
 		}
 		for(int i=in-1;i>=0;--i)
 		{
@@ -93,7 +95,7 @@ struct DFA
 		}
 		int ret=0;
 		for(int i=0;i<n;++i)
-			if(visit[i])ret++;
+			if(visit[i]) ret++;
 		return ret;
 	}
 };
