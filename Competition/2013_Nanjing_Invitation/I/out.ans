@@ -1,0 +1,15 @@
+1
+NULL
+NOTICE: Undefined Variable $d.
+integer: 3
+NULL
+OK
+Script was KILLED.
+
+NULL
+NOTICE: Undefined Variable $a.
+5
+WARNING: Constant A Already Defined!
+5
+string: ""
+string: "C"
