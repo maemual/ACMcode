@@ -1,1 +1,0 @@
-INDEX VERSION 1.126+/home/maemual/workspace/.metadata/.plugins/org.eclipse.jdt.core
