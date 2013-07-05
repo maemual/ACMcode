@@ -16,13 +16,19 @@ ll modexp(ll a,ll b,ll n)
 	}
 	return ret;
 } 
+void ExGCD(ll a, ll b, ll &x, ll &y){
+	if (b == 0){
+		x = 1;
+		y = 0;
+		return ;
+	}
+	ExGCD(b, a % b, x, y);
+	ll t = x;
+	x = y;
+	y = t - (a / b) * y;
+}
 int main()
 {
-	/*
-	ll x;
-	cin >> x;
-	cout << modexp(2, x, MOD) << endl;
-	*/
 	string str;
 	int n;
 	cin >> str;
@@ -32,23 +38,15 @@ int main()
 	ll ans = 0;
 	for (int i = 0; i < len; i++){
 		if (str[i] == '0' || str[i] == '5'){
-			//ans1 += modexp(2, i, MOD);
 			ll tmp1 = modexp(2, i, MOD);
-			ll tmp2 = modexp(2, len, MOD);
-			ll tmp3 = modexp(tmp2, n, MOD);
-			ans1 += tmp1 * ((tmp3 - 1) % MOD) / ((tmp2 - 1) % MOD);
-			ans += ans1 % MOD;
+			ll tmp2 = modexp(2, n * len, MOD) - 1;
+			ll tmp3 = modexp(2, len, MOD) - 1;
+			ll x, y;
+			ExGCD(tmp3, MOD, x, y);
+			ll tmp4 = tmp2 * (x + MOD) % MOD;
+			ans += (tmp1 % MOD) * (tmp4 % MOD) % MOD;
 		}
 	}
 	cout << ans << endl;
-	/*
-	ans1 %= MOD;
-	long long ans2 = modexp(2, (n - 1) * len, MOD);
-	ans2 %= MOD;
-	long long ans = (ans1 * ans2) % MOD;
-	//cout << ans1 << endl;
-	//cout << ans2 << endl;
-	//cout << ans << endl;
-	*/
 	return 0;
 }
