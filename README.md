@@ -11,6 +11,8 @@ ZOJ中做的题目
 HDU中做的题目
 ## Local ##
 我们自己judge的题目
+## USACO ##
+USACO的题目不错，努力争取通关！
 ## Compition ##
 一些比赛的题目
 ## Train ##
