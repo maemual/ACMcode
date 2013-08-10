@@ -14,17 +14,17 @@ bool compare(string s1,string s2)
 	}
 	if (i == s1.size())
 		return true;
-	else 
+	else
 		return false;
 }
 int main()
 {
 	string s1,s2;
 	while (cin >> s1 >> s2)
-	{		
+	{
 		if (compare(s1,s2))
 			cout << "Yes" << endl;
-		else 
+		else
 			cout << "No" << endl;
 	}
 	return 0;
