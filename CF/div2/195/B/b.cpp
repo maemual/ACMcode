@@ -1,46 +1,29 @@
-#include<cstdio>
-#include<cmath>
-#include<cstdlib>
 #include<iostream>
+#include<cstdio>
+#include<cstring>
+#include<algorithm>
+#include<stdlib.h>
+#include<cmath>
 using namespace std;
-
+#define eps 1e-6
 int main()
 {
-    long long m, R;
-    cin >> m >> R;
-    if (m == 1){
-        printf("%.10lf\n", 2.0 * R);
-        return 0;
+    long long m,r,i;
+    cin>>m>>r;
+    double s =0,s1=0;
+    for(i = 1 ; i <= m ; i++)
+    {
+        s = 0;
+        if(i>2)
+        s+=(i-2)*(i-1)*r+(i-2.0)*sqrt(2.0)*2*r+sqrt(2.0)*r+2*r;
+        else
+            s+=(i-1)*i*r+(i-1)*sqrt(2.0)*r;
+        if(m-i>=2)
+            s+=(m-i-1)*(m-i)*r+(m-i-1)*sqrt(2.0)*2*r+2*r+sqrt(2.0)*r+2*r;
+        else
+            s+=(m-i)*(m-i+1)*r+(m-i)*sqrt(2.0)*r+2*r;
+        s1+=s/m;
     }
-    double ans = 0;
-    for (int i = 1; i < m; i++){
-       //ans += 1;
-       ans += (1 + 2 * (m - i) - 1) * (m - i) / 2;
-    }
-    cout << ans << endl;
-    ans *= 2;
-    cout << ans << endl;
-    ans += 2 * m;
-    cout << ans << endl;
-    ans += m * m;
-    ans += m * (m - 1) * sqrt(2);
-    printf("%.10lf\n", ans * R / m / m);
-    /*
-    long long num = 0;
-    //num += m == 2?0:(((m-2)*(m-2)+2)*(m-2));
-    //num += ((m - 1) * (m - 1) + 1) * 2;
-    for (int i = m - 1; i >= m / 2; i--){
-        num += (m - i) + (1 + 2 * i - 1) * i / 2;
-    }
-    num *= 2;
-    if (m % 2 == 1){
-        for (int i = 1; i < m / 2; i++){
-            num += (2 * i + 1) * 2;
-        }
-        num += 3;
-    }
-    num += m * m;
-    printf("%.10lf\n", (num * 1.0 + sqrt(2) * (m - 1) * m) * R / (m * m));
-    */
+    printf("%.10f\n",s1/m);
     return 0;
 }
