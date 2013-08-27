@@ -34,7 +34,7 @@ int main()
         int layer = 0;
         while (px != 1){
             px /= 2;
-            if (layer == 0){
+            if (layer % 2 == 0){
                 arr[px] = arr[px * 2] | arr[px * 2 + 1];
             }else{
                 arr[px] = arr[px * 2] ^ arr[px * 2 + 1];
