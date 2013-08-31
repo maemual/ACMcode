@@ -26,8 +26,9 @@ int main()
                 else if (xmult(p[i], p[j], p[k]) > 0)
                     mmax2 = max(mmax2, xmult(p[i], p[j], p[k]));
             }
-            if (mmax1 + mmax2 > maxarea)
-                maxarea = mmax1 + mmax2;
+            if (mmax1 >= 0 && mmax2 >= 0)
+                if (mmax1 + mmax2 > maxarea)
+                    maxarea = mmax1 + mmax2;
         }
     }
     printf("%lf\n", maxarea * 0.5);

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import os
 import sys
 
@@ -13,7 +14,6 @@ def main():
 
 	params = ["'"+p+"'" for p in l if os.path.splitext(p)[1] in EXT]
 
-	#result = os.popen("wc -l %s | tail -n 1"%" ".join(params)).read()
 	result = os.popen("wc -l %s "%" ".join(params)).read()
 	print result
 
