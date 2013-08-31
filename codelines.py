@@ -1,7 +1,7 @@
 import os
 import sys
 
-EXT = ['.c','.cpp','.java','.py', '.cs']
+EXT = ['.c','.cpp','.java','.py']
 
 def main():
 	l = []
