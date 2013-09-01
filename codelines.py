@@ -3,6 +3,8 @@ import os
 import sys
 
 EXT = ['.c','.cpp','.java','.py']
+def shellquote(s):
+    return "'" + s.replace("'", "'\\''") + "'"
 
 def main():
 	l = []
@@ -12,7 +14,7 @@ def main():
 	else:
 		l.append(sys.argv[1])
 
-	params = ["'"+p+"'" for p in l if os.path.splitext(p)[1] in EXT]
+	params = [shellquote(p) for p in l if os.path.splitext(p)[1] in EXT]
 
 	result = os.popen("wc -l %s "%" ".join(params)).read()
 	print result
