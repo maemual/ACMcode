@@ -1,0 +1,62 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AreaTria	polygon.cpp	/^double AreaTria(point a, point b, point c){$/;"	f
+Diameter	polygon.cpp	/^double Diameter(point p[], int n){$/;"	f
+Line	polygon.cpp	/^struct Line{double a, b, c;};$/;"	s	file:
+MAX_LEN	polygon.cpp	6;"	d	file:
+PI	polygon.cpp	8;"	d	file:
+_sign	polygon.cpp	16;"	d	file:
+a	polygon.cpp	/^    point a, b;$/;"	m	struct:line	file:
+a	polygon.cpp	/^struct Line{double a, b, c;};$/;"	m	struct:Line	file:
+area_of_polygon	polygon.cpp	/^double area_of_polygon(int n, point p[]){$/;"	f
+b	polygon.cpp	/^    point a, b;$/;"	m	struct:line	file:
+b	polygon.cpp	/^struct Line{double a, b, c;};$/;"	m	struct:Line	file:
+barycenter	polygon.cpp	/^point barycenter(int n, point p[]){$/;"	f
+c	polygon.cpp	/^struct Line{double a, b, c;};$/;"	m	struct:Line	file:
+disptoline	polygon.cpp	/^double disptoline(point p, line l){$/;"	f
+disptoseg	polygon.cpp	/^double disptoseg(point p, line l){$/;"	f
+dist	polygon.cpp	/^double dist(point p1, point p2){$/;"	f
+dist2	polygon.cpp	/^double dist2(point p1, point p2){$/;"	f
+dmult	polygon.cpp	/^double dmult(point p1, point p2, point p0){$/;"	f
+dot_online_ex	polygon.cpp	/^int dot_online_ex(point p, line l){$/;"	f
+dot_online_in	polygon.cpp	/^int dot_online_in(point p, line l){$/;"	f
+dots_inline	polygon.cpp	/^int dots_inline(point p1, point p2, point p3){$/;"	f
+eps	polygon.cpp	7;"	d	file:
+inside_convex	polygon.cpp	/^int inside_convex(point q, int n, point p[]){$/;"	f
+inside_convex_v2	polygon.cpp	/^int inside_convex_v2(point q, int n, point p[]){$/;"	f
+inside_polygon	polygon.cpp	/^int inside_polygon(line l1, int n, point p[]){$/;"	f
+inside_polygon	polygon.cpp	/^int inside_polygon(point q, int n, point p[], int offset, int on_edge = 1){$/;"	f
+intersect_ex	polygon.cpp	/^int intersect_ex(line u, line v){$/;"	f
+intersect_in	polygon.cpp	/^int intersect_in(line u, line v){$/;"	f
+intersection	polygon.cpp	/^point intersection(line u, line v){$/;"	f
+intersection	polygon.cpp	/^point intersection(point ua, point ub, point va, point vb){$/;"	f
+isSimple	polygon.cpp	/^bool isSimple(point p[], int n){$/;"	f
+is_convex	polygon.cpp	/^int is_convex(int n, point p[]){$/;"	f
+is_convex_v2	polygon.cpp	/^int is_convex_v2(int n, point p[]){$/;"	f
+line	polygon.cpp	/^    line() {}$/;"	f	struct:line
+line	polygon.cpp	/^    line(point p1, point p2):a(p1), b(p2) {}$/;"	f	struct:line
+line	polygon.cpp	/^struct line{$/;"	s	file:
+lineFromSegment	polygon.cpp	/^Line lineFromSegment(point p1, point p2){$/;"	f
+lineInter	polygon.cpp	/^point lineInter(Line l1, Line l2){$/;"	f
+main	polygon.cpp	/^int main()$/;"	f
+opposite_side	polygon.cpp	/^int opposite_side(point p1, point p2, line l){$/;"	f
+parallel	polygon.cpp	/^int parallel(line u, line v){$/;"	f
+perpendicular	polygon.cpp	/^int perpendicular(line u, line v){$/;"	f
+point	polygon.cpp	/^    point() {}$/;"	f	struct:point
+point	polygon.cpp	/^    point(double _x, double _y):x(_x), y(_y){}$/;"	f	struct:point
+point	polygon.cpp	/^struct point{$/;"	s	file:
+polygon_cut	polygon.cpp	/^void polygon_cut(int &n, point p[], line l1, point side){$/;"	f
+ptoline	polygon.cpp	/^point ptoline(point p, line l){$/;"	f
+ptoseg	polygon.cpp	/^point ptoseg(point p, line l){$/;"	f
+rotate	polygon.cpp	/^point rotate(point v, point p, double angle, double scale){$/;"	f
+same_side	polygon.cpp	/^int same_side(point p1, point p2, line l){$/;"	f
+symmetricalPoint	polygon.cpp	/^point symmetricalPoint(point p1, point p2){$/;"	f
+symmetricalPointofLine	polygon.cpp	/^point symmetricalPointofLine(point p, Line l){$/;"	f
+x	polygon.cpp	/^    double x, y;$/;"	m	struct:point	file:
+xmult	polygon.cpp	/^double xmult(point p1, point p2, point p0){$/;"	f
+y	polygon.cpp	/^    double x, y;$/;"	m	struct:point	file:
+zero	polygon.cpp	12;"	d	file:
