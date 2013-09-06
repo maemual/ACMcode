@@ -1,89 +1,114 @@
-#include <queue>
-#include <stack>
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstring>
+#include <cmath>
 #include <iostream>
-#include <limits.h>
-#include <string.h>
-#include <string>
-#include <algorithm>
-
 using namespace std;
+#define eps 1e-10
+const int MAXN = 105;
+struct Point{
+    double x,y;
+    Point(){}
+    Point(double _x,double _y):x(_x),y(_y){}
+};
+/*半平面相交（直线切割多边形）（点标号从1开始）*/
+Point points[MAXN],p[MAXN],q[MAXN];
+int n;
+double r;
+int cCnt,curCnt;
 
-const int MAX = 1510;
-struct point{ double x,y;};
-point p[MAX],s[MAX];
-const double eps = 1e-6;
-bool dy(double x,double y)	{	return x > y + eps;}	// x > y 
-bool xy(double x,double y)	{	return x < y - eps;}	// x < y 
-bool dyd(double x,double y)	{ 	return x > y - eps;}	// x >= y 
-bool xyd(double x,double y)	{	return x < y + eps;} 	// x <= y 
-bool dd(double x,double y) 	{	return fabs( x - y ) < eps;}  // x == y
-double xmult(point a,point b,point c)//向量 ac 在 ab 的方向
-{
-	return (c.x - a.x)*(b.y - a.y) - (b.x - a.x)*(c.y - a.y);
+inline void getline(Point x,Point y,double &a,double &b,double &c){
+    a = y.y - x.y;
+    b = x.x - y.x;
+    c = y.x * x.y - x.x * y.y;
 }
-point intersection(point u1,point u2,point v1,point v2)
-{
-	point ans = u1;
-	double t = ((u1.x - v1.x)*(v1.y - v2.y) - (u1.y - v1.y)*(v1.x - v2.x))/
-				((u1.x - u2.x)*(v1.y - v2.y) - (u1.y - u2.y)*(v1.x - v2.x));
-	ans.x += (u2.x - u1.x)*t;
-	ans.y += (u2.y - u1.y)*t;
-	return ans;
+inline void initial(){
+    for(int i = 1; i <= n; ++i)
+        p[i] = points[i];
+    p[n+1] = p[1];
+    p[0] = p[n];
+    cCnt = n;
 }
-void change_wise(point p[],int n)
-{
-	for(int i=0; i<n/2; i++)
-		swap(p[i],p[n-i-1]);
+inline Point intersect(Point x,Point y,double a,double b,double c){
+    double u = fabs(a * x.x + b * x.y + c);
+    double v = fabs(a * y.x + b * y.y + c);
+    return Point( (x.x * v + y.x * u) / (u + v) , (x.y * v + y.y * u) / (u + v) );
 }
-void inst_hp(point p[],int n,point s[],int &len)
-{
-	point tp[MAX];
-	p[n] = p[0];
-	for(int i=0; i<=n; i++)
-		tp[i] = p[i];
-	int cp = n,tc;
-	for(int i=0; i<n; i++)
-	{
-		tc = 0;
-		for(int k=0; k<cp; k++)
-		{
-			if( xyd(xmult(p[i],p[i+1],tp[k]),0.0) )// 顺时针的话是dyd
-				s[tc++] = tp[k];
-			if( xy(xmult(p[i],p[i+1],tp[k])*
-					xmult(p[i],p[i+1],tp[k+1]),0.0) )
-				s[tc++] = intersection(p[i],p[i+1],tp[k],tp[k+1]);
-		}
-		s[tc] = s[0];
-		for(int k=0; k<=tc; k++)
-			tp[k] = s[k];
-		cp = tc;
-	}
-	len = cp;
+inline void cut(double a,double b ,double c){
+    curCnt = 0;
+    for(int i = 1; i <= cCnt; ++i){
+        if(a*p[i].x + b*p[i].y + c >= 0)
+            q[++curCnt] = p[i];
+        else {
+            if(a*p[i-1].x + b*p[i-1].y + c > 0){
+                q[++curCnt] = intersect(p[i],p[i-1],a,b,c);
+            }
+            if(a*p[i+1].x + b*p[i+1].y + c > 0){
+                q[++curCnt] = intersect(p[i],p[i+1],a,b,c);
+            }
+        }
+    }
+    for(int i = 1; i <= curCnt; ++i)
+        p[i] = q[i];
+    p[curCnt+1] = q[1];
+    p[0] = p[curCnt];
+    cCnt = curCnt;
 }
-double area_polygon(point p[],int n)
-{
-	double s = 0.0;
-	for(int i=0; i<n; i++)
-		s += p[(i+1)%n].y * p[i].x - p[(i+1)%n].x * p[i].y;
-	return s/2.0;
+bool solve(){
+    //注意：默认点是顺时针，如果题目不是顺时针，规整化方向
+    initial();
+    for(int i = 1; i <= n; ++i){
+        double a,b,c;
+        getline(points[i],points[i+1],a,b,c);
+        cut(a,b,c);
+    }
+	/* 
+    如果要向内推进r，用该部分代替上个函数 
+    for(int i = 1; i <= n; ++i){ 
+        Point ta, tb, tt; 
+        tt.x = points[i+1].y - points[i].y; 
+        tt.y = points[i].x - points[i+1].x; 
+        double k = r / sqrt(tt.x * tt.x + tt.y * tt.y); 
+        tt.x = tt.x * k; 
+        tt.y = tt.y * k; 
+        ta.x = points[i].x + tt.x; 
+        ta.y = points[i].y + tt.y; 
+        tb.x = points[i+1].x + tt.x; 
+        tb.y = points[i+1].y + tt.y; 
+        double a,b,c; 
+        getline(ta,tb,a,b,c); 
+        cut(a,b,c); 
+    } 
+    */  
+    //此时cCnt为最终切割得到的多边形的顶点数，p为存放顶点的数组
+	//多边形核的面积  
+    double area = 0;  
+    for(int i = 1; i <= curCnt; ++i)  
+        area += p[i].x * p[i + 1].y - p[i + 1].x * p[i].y;  
+    area = fabs(area / 2.0); 
+    if (cCnt == 0)
+        return false;
+    else
+        return true;
 }
+inline void GuiZhengHua(){
+     //规整化方向，逆时针变顺时针，顺时针变逆时针
+    for(int i = 1; i < (n+1)/2; i ++)
+      swap(points[i], points[n-i]);//头文件加iostream
+}
+
 int main()
 {
-	int len,T,n;
-	scanf("%d",&T);
-	while(T--)
-	{
-		scanf("%d",&n);
-		for(int i=0; i<n; i++)
-			scanf("%lf%lf",&p[i].x,&p[i].y);
-		double area = area_polygon(p,n);
-		if(xyd(area,0.0)) change_wise(p,n);
-		inst_hp(p,n,s,len);
-		double ans = area_polygon(s,len);
-		printf("%.2lf\n",fabs(ans));
-	}
+    int T = 0;
+    scanf("%d", &T);
+    while (T--){
+        scanf("%d",&n);
+        for (int i = 1; i <= n; i++)
+            scanf("%lf%lf", &points[i].x, &points[i].y);
+        points[n+1] = points[1];
+        if (solve())
+            printf("YES\n");
+        else
+            printf("NO\n");
+    }
     return 0;
 }
