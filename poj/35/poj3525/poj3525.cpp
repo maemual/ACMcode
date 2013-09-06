@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 #define EPS 1e-10
-const int MAXN = 1505;
+const int MAXN = 200;
 struct Point{
     double x,y;
     Point(){}
@@ -35,8 +35,7 @@ inline Point intersect(Point x,Point y,double a,double b,double c){
 inline void cut(double a,double b ,double c){
     curCnt = 0;
     for(int i = 1; i <= cCnt; ++i){
-        if(a*p[i].x + b*p[i].y + c >= 0)
-            q[++curCnt] = p[i];
+        if(a*p[i].x + b*p[i].y + c >= 0)q[++curCnt] = p[i];
         else {
             if(a*p[i-1].x + b*p[i-1].y + c > 0){
                 q[++curCnt] = intersect(p[i],p[i-1],a,b,c);
@@ -50,27 +49,41 @@ inline void cut(double a,double b ,double c){
     p[curCnt+1] = q[1];p[0] = p[curCnt];
     cCnt = curCnt;
 }
-double solve(){
+inline int solve(double r){
     initial();
     for(int i = 1; i <= n; ++i){
+        Point ta, tb, tt;
+        tt.x = points[i+1].y - points[i].y;
+        tt.y = points[i].x - points[i+1].x;
+        double k = r / sqrt(tt.x * tt.x + tt.y * tt.y);
+        tt.x = tt.x * k;
+        tt.y = tt.y * k;
+        ta.x = points[i].x + tt.x;
+        ta.y = points[i].y + tt.y;
+        tb.x = points[i+1].x + tt.x;
+        tb.y = points[i+1].y + tt.y;
         double a,b,c;
-        getline(points[i],points[i+1],a,b,c);
+        getline(ta,tb,a,b,c);
         cut(a,b,c);
     }
-    double area = 0;
-    for (int i = 1; i <= curCnt; i++)
-        area += p[i].x * p[i+1].y - p[i+1].x * p[i].y;
-    return fabs(area / 2.0);
+    if(cCnt <= 0)return 0;
+    return 1;
 }
 int main(){
-    int T;
-    scanf("%d", &T);
-    while (T--){
-        scanf("%d",&n);
-        for(int i = 1; i <= n; ++i)
-            points[i].input();
+    while(scanf("%d",&n) != EOF){
+        if(n == 0)break;
+        for(int i = 1; i <= n; ++i)points[i].input();
+       for(int i = 1; i < (n+1)/2; i ++)
+            swap(points[i], points[n-i]);
         points[n+1] = points[1];
-        printf("%.2f\n",solve());
+        double high = 10000000;
+        double low = 0,mid;
+        while(low + EPS <= high){
+            mid = (high + low)/2.0;
+            if(solve(mid))low = mid;
+            else high = mid;
+        }
+        printf("%lf\n",high);
     }
     return 0;
 }

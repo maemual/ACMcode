@@ -1,92 +1,92 @@
-#include <queue>
-#include <stack>
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstring>
+#include <cmath>
 #include <iostream>
-#include <limits.h>
-#include <string.h>
-#include <string>
-#include <algorithm>
-
 using namespace std;
+#define eps 1e-10
+const int MAXN = 105;
+struct Point{
+    double x,y;
+    Point(){}
+    Point(double _x,double _y):x(_x),y(_y){}
+};
+/*°ëÆ½ÃæÏà½»£¨Ö±ÏßÇÐ¸î¶à±ßÐÎ£©£¨µã±êºÅ´Ó1¿ªÊ¼£©*/
+Point points[MAXN],p[MAXN],q[MAXN];
+int n;
+double r;
+int cCnt,curCnt;
 
-const int MAX = 1510;
-struct point{ double x,y;};
-point p[MAX],s[MAX];
-const double eps = 1e-6;
-bool dy(double x,double y)	{	return x > y + eps;}	// x > y
-bool xy(double x,double y)	{	return x < y - eps;}	// x < y
-bool dyd(double x,double y)	{ 	return x > y - eps;}	// x >= y
-bool xyd(double x,double y)	{	return x < y + eps;} 	// x <= y
-bool dd(double x,double y) 	{	return fabs( x - y ) < eps;}  // x == y
-double xmult(point a,point b,point c)//å‘é‡ ac åœ¨ ab çš„æ–¹å‘
-{
-	return (c.x - a.x)*(b.y - a.y) - (b.x - a.x)*(c.y - a.y);
+inline void getline(Point x,Point y,double &a,double &b,double &c){
+    a = y.y - x.y;
+    b = x.x - y.x;
+    c = y.x * x.y - x.x * y.y;
 }
-point intersection(point u1,point u2,point v1,point v2)
-{
-	point ans = u1;
-	double t = ((u1.x - v1.x)*(v1.y - v2.y) - (u1.y - v1.y)*(v1.x - v2.x))/
-				((u1.x - u2.x)*(v1.y - v2.y) - (u1.y - u2.y)*(v1.x - v2.x));
-	ans.x += (u2.x - u1.x)*t;
-	ans.y += (u2.y - u1.y)*t;
-	return ans;
+inline void initial(){
+    for(int i = 1; i <= n; ++i)
+        p[i] = points[i];
+    p[n+1] = p[1];
+    p[0] = p[n];
+    cCnt = n;
 }
-void change_wise(point p[],int n)
-{
-	for(int i=0; i<n/2; i++)
-		swap(p[i],p[n-i-1]);
+inline Point intersect(Point x,Point y,double a,double b,double c){
+    double u = fabs(a * x.x + b * x.y + c);
+    double v = fabs(a * y.x + b * y.y + c);
+    return Point( (x.x * v + y.x * u) / (u + v) , (x.y * v + y.y * u) / (u + v) );
 }
-void inst_hp(point p[],int n,point s[],int &len)
-{
-	point tp[MAX];
-	p[n] = p[0];
-	for(int i=0; i<=n; i++)
-		tp[i] = p[i];
-	int cp = n,tc;
-	for(int i=0; i<n; i++)
-	{
-		tc = 0;
-		for(int k=0; k<cp; k++)
-		{
-			if( xyd(xmult(p[i],p[i+1],tp[k]),0.0) )// é¡ºæ—¶é’ˆçš„è¯æ˜¯dyd
-				s[tc++] = tp[k];
-			if( xy(xmult(p[i],p[i+1],tp[k])*
-					xmult(p[i],p[i+1],tp[k+1]),0.0) )
-				s[tc++] = intersection(p[i],p[i+1],tp[k],tp[k+1]);
-		}
-		s[tc] = s[0];
-		for(int k=0; k<=tc; k++)
-			tp[k] = s[k];
-		cp = tc;
-	}
-	len = cp;
+inline void cut(double a,double b ,double c){
+    curCnt = 0;
+    for(int i = 1; i <= cCnt; ++i){
+        if(a*p[i].x + b*p[i].y + c >= 0)
+            q[++curCnt] = p[i];
+        else {
+            if(a*p[i-1].x + b*p[i-1].y + c > 0){
+                q[++curCnt] = intersect(p[i],p[i-1],a,b,c);
+            }
+            if(a*p[i+1].x + b*p[i+1].y + c > 0){
+                q[++curCnt] = intersect(p[i],p[i+1],a,b,c);
+            }
+        }
+    }
+    for(int i = 1; i <= curCnt; ++i)
+        p[i] = q[i];
+    p[curCnt+1] = q[1];
+    p[0] = p[curCnt];
+    cCnt = curCnt;
 }
-double area_polygon(point p[],int n)
-{
-	double s = 0.0;
-	for(int i=0; i<n; i++)
-		s += p[(i+1)%n].y * p[i].x - p[(i+1)%n].x * p[i].y;
-	return s/2.0;
+bool solve(){
+    //×¢Òâ£ºÄ¬ÈÏµãÊÇË³Ê±Õë£¬Èç¹ûÌâÄ¿²»ÊÇË³Ê±Õë£¬¹æÕû»¯·½Ïò
+    initial();
+    for(int i = 1; i <= n; ++i){
+        double a,b,c;
+        getline(points[i],points[i+1],a,b,c);
+        cut(a,b,c);
+    }
+    //´ËÊ±cCntÎª×îÖÕÇÐ¸îµÃµ½µÄ¶à±ßÐÎµÄ¶¥µãÊý£¬pÎª´æ·Å¶¥µãµÄÊý×é
+    if (cCnt == 0)
+        return false;
+    else
+        return true;
 }
+inline void GuiZhengHua(){
+     //¹æÕû»¯·½Ïò£¬ÄæÊ±Õë±äË³Ê±Õë£¬Ë³Ê±Õë±äÄæÊ±Õë
+    for(int i = 1; i < (n+1)/2; i ++)
+      swap(points[i], points[n-i]);//Í·ÎÄ¼þ¼Óiostream
+}
+
 int main()
 {
-	int len,T,n;
-	//scanf("%d",&T);
-	while(1)
-	{
-		scanf("%d",&n);
+    int T = 0;
+    while (1){
+        scanf("%d",&n);
         if (n == 0) break;
-		for(int i=0; i<n; i++)
-			scanf("%lf%lf",&p[i].x,&p[i].y);
-		double area = area_polygon(p,n);
-		if(xyd(area,0.0)) change_wise(p,n);
-		inst_hp(p,n,s,len);
-        if (len > 0)
-            printf("Floor #%d\nSurveillance is possible.\n\n", ++T);
+        for (int i = 1; i <= n; i++)
+            scanf("%lf%lf", &points[i].x, &points[i].y);
+        points[n+1] = points[1];
+        printf("Floor #%d\n", ++T);
+        if (solve())
+            printf("Surveillance is possible.\n\n");
         else
-            printf("Floor #%d\nSurveillance is impossible.\n\n",++T);
-	}
+            printf("Surveillance is impossible.\n\n");
+    }
     return 0;
 }
