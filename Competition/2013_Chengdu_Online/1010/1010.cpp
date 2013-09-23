@@ -24,7 +24,6 @@ int main()
                if (tmp >= m) break;
                ans++;
            }
-           //ans += j - i - 1;
        }
        printf("Case #%d: %lld\n", k, ans);
     }
