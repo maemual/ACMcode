@@ -183,26 +183,13 @@ int main()
         if (!strcmp(from, "RGB")){
             scanf("%lf %lf %lf", &rgb.r, &rgb.g, &rgb.b);
         }else if (!strcmp(from, "HSL")){
-            scanf("%lf", &hsl.h);
-            scanf("%s", str);
-            str[strlen(str)-1] = '\0';
-            hsl.s = atoi(str);
-            scanf("%s", str);
-            str[strlen(str)-1] = '\0';
-            hsl.l = atoi(str);
+            scanf("%lf %lf%% %lf%%", &hsl.h, &hsl.s, &hsl.l);
         }else if (!strcmp(from, "HSV")){
-            scanf("%lf", &hsv.h);
-            scanf("%s", str);
-            str[strlen(str)-1] = '\0';
-            hsv.s = atoi(str);
-            scanf("%s", str);
-            str[strlen(str)-1] = '\0';
-            hsv.v = atoi(str);
+            scanf("%lf %lf%% %lf%%", &hsv.h, &hsv.s, &hsv.v);
         }
 
         if (!strcmp(target, "RGB")){
-            if (!strcmp(from, "RGB")){
-            }else if (!strcmp(from, "HSL")){
+            if (!strcmp(from, "HSL")){
                 rgb = HSL2RGB(hsl);
             }else if (!strcmp(from, "HSV")){
                 rgb = HSV2RGB(hsv);
@@ -211,7 +198,6 @@ int main()
         }else if (!strcmp(target, "HSL")){
             if (!strcmp(from, "RGB")){
                 hsl = RGB2HSL(rgb);
-            }else if (!strcmp(from, "HSL")){
             }else if (!strcmp(from, "HSV")){
                 hsl = HSV2HSL(hsv);
             }
@@ -221,7 +207,6 @@ int main()
                 hsv = RGB2HSV(rgb);
             }else if (!strcmp(from, "HSL")){
                 hsv = HSL2HSV(hsl);
-            }else if (!strcmp(from, "HSV")){
             }
             printf("HSV %.0lf %.0lf%% %.0lf%%\n", hsv.h, hsv.s, hsv.v);
         }
