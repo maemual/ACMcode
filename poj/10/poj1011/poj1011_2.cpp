@@ -30,8 +30,7 @@ bool dfs(int now,int need,int k)
 	  return true;
 	for (int i=k;i<n;i++)
 	{
-		if (!vis[i] && need>=sticks[i])
-		{
+		if (!vis[i] && need>=sticks[i]){
 			vis[i] = true;
 			if (dfs(now,need-sticks[i],i+1))
 			  return true;
@@ -57,8 +56,8 @@ int main()
 		  break;
 		sum = 0;
 		memset(vis,0,sizeof(vis));
-		for (int i=0;i<n;i++)
-		{
+
+		for (int i=0;i<n;i++){
 			scanf("%d",&sticks[i]);
 			sum+=sticks[i];
 		}
