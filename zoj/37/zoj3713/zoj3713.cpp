@@ -1,7 +1,7 @@
 /*************************************************************************
 	> File Name: i.cpp
 	> Author: maemual
-	> Mail: maemual@gmail.com 
+	> Mail: maemual@gmail.com
 	> Created Time: 2013年07月18日 星期四 09时59分09秒
  ************************************************************************/
 
@@ -24,7 +24,7 @@ int main()
         {
             printf("%02X", (len & 127) + (len>127?128:0));
             len >>= 7;
-            if (len == 0)  
+            if (len == 0)
 				break;
         }
         for(int i = 0; i < len2; i++)
